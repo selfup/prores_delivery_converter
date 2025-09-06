@@ -1,10 +1,10 @@
-# H264/H265 to ProRes 422 and 422HQ
+# ProRes Delivery Converter
 
-Convert H264 and H265 to ProRes. MP4 and MOV supported.
+Convert H264 and H265 to ProRes422 or ProRes422HQ. MP4 and MOV supported.
 
 Converted files will now also work on Windows in Davinci Resolve (free).
 
-This takes care of the h265 problem if others you work with need ProRes files and your camera cannot record in ProRes natively.
+This takes care of the H265 problem if others you work with need ProRes files and your camera cannot record in ProRes natively.
 
 I built this little utility script because I am often asked to provide ProRes files.
 
