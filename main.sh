@@ -89,7 +89,7 @@ do
     output_file="$pro_res_dir/${name_without_ext}_PRORES.MOV"
     
     # Check if output file already exists
-    if [ -f "$output_file" ]
+    if [[ -f "$output_file" && $SKIP != "false" ]]
     then
         echo "[$current/$total_files] Skipping: $filename (already converted)"
 

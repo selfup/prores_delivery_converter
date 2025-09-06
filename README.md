@@ -10,6 +10,10 @@ I built this little utility script because I am often asked to provide ProRes fi
 
 The script itself has a bunch of useful comments and isn't terribly large for what it does.
 
+The script will skip files that have already been converted.
+
+This should be useful! But it can also not be so. To prevent skipping set `SKIP=false`
+
 ---
 
 ### Example Useage
@@ -18,9 +22,13 @@ Example One:   `./main.sh movs prores 422`
 
 Example Two:   `./main.sh mp4s prores 422`
 
-Example Three: `./main.sh /Volumes/T9/FX30 /Volumes/T9/FX30_PRORES 422`
+Example Three: `./main.sh /Volumes/T9/FX30 /Volumes/T9/FX30/PRORES 422`
 
-Example Four:  `./main.sh /Volumes/T9/XH2S /Volumes/T9/XH2S_PRORES 422HQ`
+Example Four:  `./main.sh /Volumes/T9/XH2S /Volumes/T9/XH2S/PRORES 422HQ`
+
+_to avoid skipping already converted files:_
+
+Example Five:   `SKIP=false ./main.sh $HOME/FX30 $HOME/FX30/PRORES 422`
 
 ---
 
