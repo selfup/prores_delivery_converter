@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-movs_dir=$1
+videos_dir=$1
 pro_res_dir=$2
 quality=$3
 
@@ -45,26 +45,26 @@ else
 fi
 
 # Check if directories exist
-if [ ! -d "$movs_dir" ]
+if [ ! -d "$videos_dir" ]
 then
-    echo "Error: MOV directory '$movs_dir' does not exist"
+    echo "Error: Source Video directory '$videos_dir' does not exist"
 
     exit 1
 fi
 
 if [ ! -d "$pro_res_dir" ]
 then
-    echo "Creating ProRes directory: $pro_res_dir"
+    echo "Creating target ProRes directory: $pro_res_dir"
 
     mkdir -p "$pro_res_dir"
 fi
 
 # Count total video files (MOV and MP4)
-total_files=$(find "$movs_dir" -maxdepth 1 \( -name "*.MOV" -o -name "*.mov" -o -name "*.MP4" -o -name "*.mp4" \) | wc -l)
+total_files=$(find "$videos_dir" -maxdepth 1 \( -name "*.MOV" -o -name "*.mov" -o -name "*.MP4" -o -name "*.mp4" \) | wc -l)
 
 if [ "$total_files" -eq 0 ]
 then
-    echo "No video files (.MOV or .MP4) found in $movs_dir"
+    echo "No video files (.MOV or .MP4) found in $videos_dir"
 
     exit 1
 fi
@@ -74,7 +74,7 @@ echo "Found $total_files video files to convert"
 current=0
 
 # Loop through all video files in the directory
-for video_file in "$movs_dir"/*.MOV "$movs_dir"/*.mov "$movs_dir"/*.MP4 "$movs_dir"/*.mp4
+for video_file in "$videos_dir"/*.MOV "$videos_dir"/*.mov "$videos_dir"/*.MP4 "$videos_dir"/*.mp4
 do
     # Skip if no files match the pattern
     [ -e "$video_file" ] || continue
@@ -144,7 +144,8 @@ do
     else
         echo "Failed to convert: $filename"
     fi
-    echo ""
+
+    echo "---"
 done
 
 echo "Conversion complete! Processed $current files."
